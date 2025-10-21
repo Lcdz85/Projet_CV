@@ -1,9 +1,9 @@
-html, body {
+/* html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* empêche tout défilement */
-  }
+    overflow: hidden; 
+  } */
 
 .cadre {
     position: fixed;
@@ -63,6 +63,7 @@ img{
     text-decoration: none;
     font-size: 1.2rem;
  }
+
 main{
     height: 100vh;
     display: flex;
@@ -74,31 +75,42 @@ main{
 
 #home{
     order: 3;
-    flex-basis: 100vw;
+    width: 100vw;
     text-align: center;
     background-color: aquamarine;
 }
 #portfolio{
     order: 1;
-    flex-basis: 45vw;
+    width: 45vw;
+    height: 45vw;
     text-align: center;
     background-color: burlywood;
 }
+    #cartes-projet{
+        display: flex;
+    }
+    .card-img-top{
+        max-width: 100%;
+    }
+
 #competence{
     order: 2;
-    flex-basis: 45vw;
+    width: 45vw;
+    height: 45vw;
     text-align: center;
     background-color: cadetblue;
 }
 #parcours{
     order: 4;
-    flex-basis: 45vw;
+    width: 45vw;
+    height: 45vw;
     text-align: center;
-    background-color: chocolate;
+    background-color: rgb(214, 191, 62);
 }
 #profil{
     order: 5;
-    flex-basis: 45vw;
+    width: 45vw;
+    height: 45vw;
     text-align: center;
-    background-color: darkgoldenrod;
+    background-color: rgb(13, 69, 122);
 }
