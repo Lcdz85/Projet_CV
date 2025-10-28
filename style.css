@@ -5,182 +5,224 @@
   font-style: normal;
 }
 
-
-/* Reset default page margins to avoid extra scrollbars */
-html, body {
+/* --- Configuration de base --- */
+body {
     margin: 0;
     padding: 0;
-}
-body {
+    height: 100vh;
+    /* overflow: hidden; empêche le scroll */
+    box-sizing: border-box;
     background-image: url("img/fond-papier3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
+/* --- Zone principale --- */
+main {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 60px 10px 50px 10px;
+    box-sizing: border-box;
+}
 
+/* --- Cadre fixe --- */
 .cadre {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    border: 10px solid #222;
-    border-top: 5px solid #222;
-    border-bottom: 5px solid #222;
+    border-left: 10px solid #ffffff;
+    border-right: 10px solid #ffffff;
+    /* border-top: 5px solid #222;
+    border-bottom: 5px solid #222; */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* nav en haut et footer en bas */
+    justify-content: space-between;
     z-index: 1000;
-    background-color: transparent;  /* transparent au centre */
+    background-color: transparent;
     box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.7);
 }
-nav{
-    /* display: flex; */
-    /* justify-content: space-around; */
+
+/* --- Barre de navigation --- */
+nav {
     align-items: center;
     gap: 2rem;
-    background-color: #222;
-    padding: 0px 0;
+    background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-    height: 60px; /* explicit height for layout calculations */
+    height: 60px; /* fixe */
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Courier New', Courier, monospace;
 }
+
 nav div {
-    text-align: center; 
-    font-weight: bold;
+    text-align: center;
     transition: color 0.2s;
 }
-nav a{
+
+nav a {
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
 }
+
 nav a:hover {
     color: #8fabb3;
-} 
-nav img{
+}
+
+nav img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
+
+/* --- Pied de page --- */
 .footer-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #222;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
-    font-size: 0.9rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.6);
-    height: 50px; /* explicit height for layout calculations */
-  }
+    height: 50px; /* fixe */
+}
+
 .footer-bar a {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
- }
+}
 
-main{
-    /* Fill viewport minus fixed header/footer and avoid overlap */
-    min-height: calc(100vh - 60px - 50px);
-    padding-top: 60px;   /* equals nav height */
-    padding-bottom: 50px;/* equals footer height */
+
+/* --- Sections principales --- */
+#portfolio, #competences, #parcours, #profil {
+    width: 45%;
+    height: 45%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: center;
+    flex-direction: column;
 }
 
-#home{
-    order: 3;
-    width: 100vw;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    text-align: center;
-    
+#portfolio { 
+    order: 1; 
+    background-color: rgba(222, 184, 135, 0.150); 
+    justify-content: flex-end; 
 }
-    #home>h1{
+#competences {
+    order: 2; 
+    background-color: rgba(95, 158, 160, 0.150);
+    justify-content: flex-end; 
+}
+/* --- Section "Accueil" (centrée) --- */
+#home {
+    order: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* centre pile au milieu */
+    text-align: center;
+}
+    #home > h1 {
         font-family: 'Myfont-Bold';
+        font-size: 2vw;
         color: rgba(0, 0, 0, 0.693);
     }
-#portfolio{
-    order: 1;
-    width: 45vw;
-    height: 45vh;
-    border: 2px solid burlywood;
-    position: relative;
+#parcours { 
+    order: 4; 
+    background-color: rgba(44, 174, 30, 0.150); 
 }
-    #presentation-projet{
-        
-    }
-    #cartes-projet{
-        display: flex;
-    }
-    .card-img-top{
+#profil {
+    order: 5; 
+    background-color: rgba(93, 13, 122, 0.150); 
+}
+
+.contenu{
+    display: flex;
+    flex-direction: row;
+}
+.contenu>div{
+    border: 2px solid rgb(182, 182, 182);
+    width: 50%;
+    
+}
+
+
+
+/* --- Contenu interne du portfolio --- */
+
+#cartes-projet {
+    padding-right: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.card{
+    flex: 0 0 20%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.258);
+}
+    .card-img-top {
         width: 100%;
         aspect-ratio: 1 / 1;
         object-fit: cover;
-        object-position: center;
         border-radius: 8px; 
     }
-    .card-body{
-        padding: 0;
+    .card-body {
+        padding: 0.3rem;
         font-size: 0.5rem;
-    }
-
-#titre-portfolio{
-    text-align: right;
-    font-size: 1.5rem;
-    position: absolute;
-    bottom: 0;
-    right: 2rem;
 }
 
-#competences{
-    order: 2;
-    width: 45vw;
-    height: 45vh;
-    text-align: center;
-    border: 2px solid cadetblue;
-    position: relative;
+#card1{
+    
 }
-#titre-competences{
-    text-align: left;
-    font-size: 1.5rem;
-    position: absolute;
-    bottom: 0;
-    left: 2rem;
+#card2{
+ align-self: flex-end;   
+}
+#card3{
+    
+}
+#card4{
+ align-self: flex-end;   
 }
 
-#parcours{
-    order: 4;
-    width: 45vw;
-    height: 45vh;
-    text-align: center;
-    border: 2px solid rgb(45, 174, 30);
-    position: relative;
-}
-#titre-parcours{
-    text-align: right;
-    font-size: 1.5rem;
-    position: absolute;
-    top: 0;
-    right: 2rem;
+/* --- Titres des sections --- */
+
+/* #titre-portfolio, #titre-competences, #titre-parcours, #titre-profil */
+h2{
+    /* font-family: 'Myfont-Bold'; */
+    font-size: 1vw;
+    color: rgba(0, 0, 0, 0.693);
 }
 
-#profil{
-    order: 5;
-    width: 45vw;
-    height: 45vh;
-    text-align: center;
-    border: 2px solid rgb(93, 13, 122);
-    position: relative;
+#titre-portfolio {
+    width: fit-content;
+    /* align-self: flex-end; */
+    margin-left: auto;
+    transform: rotate(-10deg);
 }
-#titre-profil{
-    text-align: left;
+
+#titre-competences {
+    width: fit-content;
+    /* align-self: flex-end; */
+    transform: rotate(7deg);
+}
+
+#titre-parcours {
+    width: fit-content;
+    margin-left: auto;
+    transform: rotate(7deg);
+}
+
+#titre-profil {
+    width: fit-content;
     font-size: 1.5rem;
-    position: absolute;
-    top: 0;
-    left: 2rem;
+    transform: rotate(-23deg);
 }
