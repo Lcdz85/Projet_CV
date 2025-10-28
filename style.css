@@ -1,9 +1,23 @@
-/* html, body {
+@font-face {
+  font-family: 'Myfont-Bold';
+  src: url('fonts/Myfont-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* Reset default page margins to avoid extra scrollbars */
+html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow: hidden; 
-  } */
+}
+body {
+    background-image: url("img/fond-papier3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 
 .cadre {
     position: fixed;
@@ -30,6 +44,7 @@ nav{
     background-color: #222;
     padding: 0px 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    height: 60px; /* explicit height for layout calculations */
 }
 nav div {
     text-align: center; 
@@ -43,7 +58,7 @@ nav a{
 nav a:hover {
     color: #8fabb3;
 } 
-img{
+nav img{
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -57,6 +72,7 @@ img{
     padding: 10px 20px;
     font-size: 0.9rem;
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.6);
+    height: 50px; /* explicit height for layout calculations */
   }
 .footer-bar a {
     color: white;
@@ -65,7 +81,10 @@ img{
  }
 
 main{
-    height: 100vh;
+    /* Fill viewport minus fixed header/footer and avoid overlap */
+    min-height: calc(100vh - 60px - 50px);
+    padding-top: 60px;   /* equals nav height */
+    padding-bottom: 50px;/* equals footer height */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -76,41 +95,92 @@ main{
 #home{
     order: 3;
     width: 100vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
     text-align: center;
-    background-color: aquamarine;
+    
 }
+    #home>h1{
+        font-family: 'Myfont-Bold';
+        color: rgba(0, 0, 0, 0.693);
+    }
 #portfolio{
     order: 1;
     width: 45vw;
-    height: 45vw;
-    text-align: center;
-    background-color: burlywood;
+    height: 45vh;
+    border: 2px solid burlywood;
+    position: relative;
 }
+    #presentation-projet{
+        
+    }
     #cartes-projet{
         display: flex;
     }
     .card-img-top{
-        max-width: 100%;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px; 
+    }
+    .card-body{
+        padding: 0;
+        font-size: 0.5rem;
     }
 
-#competence{
+#titre-portfolio{
+    text-align: right;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    right: 2rem;
+}
+
+#competences{
     order: 2;
     width: 45vw;
-    height: 45vw;
+    height: 45vh;
     text-align: center;
-    background-color: cadetblue;
+    border: 2px solid cadetblue;
+    position: relative;
 }
+#titre-competences{
+    text-align: left;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+}
+
 #parcours{
     order: 4;
     width: 45vw;
-    height: 45vw;
+    height: 45vh;
     text-align: center;
-    background-color: rgb(214, 191, 62);
+    border: 2px solid rgb(45, 174, 30);
+    position: relative;
 }
+#titre-parcours{
+    text-align: right;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0;
+    right: 2rem;
+}
+
 #profil{
     order: 5;
     width: 45vw;
-    height: 45vw;
+    height: 45vh;
     text-align: center;
-    background-color: rgb(13, 69, 122);
+    border: 2px solid rgb(93, 13, 122);
+    position: relative;
+}
+#titre-profil{
+    text-align: left;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 2rem;
 }
