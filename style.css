@@ -161,9 +161,9 @@ main {
 }
     #titre-portfolio {
         height: 10%;
-    width: fit-content;
-    margin-left: auto;
-    transform: rotate(12deg) translate(-1.5vw, -3vh); 
+        width: fit-content;
+        margin-left: auto;
+        transform: rotate(-4deg) translate(-3vw, -1.5vh); 
 }
     .contenu{
         display: flex;
@@ -305,19 +305,19 @@ h2{
 #titre-competences {
     width: fit-content;
     /* align-self: flex-end; */
-    transform: rotate(-7deg) translate(0.5vw, -2vh);
+    transform: rotate(2deg) translate(1vw, -2vh);
 }
 
 #titre-parcours {
     width: fit-content;
     margin-left: auto;
-    transform: rotate(-7deg) translate(0.5vw, 1.5vh);
+    transform: rotate(3deg) translate(-2vw, 1.5vh);
 }
 
 #titre-profil {
     width: fit-content;
     font-size: 1.5rem;
-    transform: rotate(9deg) translate(-0.5vw, 0.5vh);
+    transform: rotate(-5deg) translate(3vw, 1vh);
 }
 
 #viewport {
