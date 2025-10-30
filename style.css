@@ -84,8 +84,8 @@ main {
         border: none;
         background-color: rgba(255, 255, 255, 0.483);
         font-family: 'Courier New', Courier, monospace;
-        font-weight: bold;
-        font-size: clamp(10px, 2vw, 32px);
+        font-weight: normal;
+        font-size: clamp(10px, 1.5vw, 32px);
     }
     .home:hover {
     content: url("img/home2.png");
@@ -118,18 +118,13 @@ main {
         align-items: center;
         color: rgb(0, 0, 0);
         padding: 10px 20px;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 1rem;
         height: 50px;
-        font-weight: bold;
-        font-size: 1.5rem;
         pointer-events: auto; 
         
     }
     .footer-bar a {
         color: white;
         text-decoration: none;
-        font-size: 1.2rem;
     }
     
     /* --- Sections principales --- */
@@ -143,7 +138,7 @@ main {
 }
     #home > h1 {
         font-family: 'Croquis';
-        font-size: 1.7vw;
+        font-size: 1.5vw;
         color: rgba(0, 0, 0, 0.693);
     }
     
@@ -298,8 +293,12 @@ main {
 h2{
     font-family: 'Pencil';
     font-size: 1.2vw;
-    color: rgba(106, 106, 106, 0.563);
 }
+    h2>a{
+        text-decoration: none;
+        color: rgba(106, 106, 106, 0.563);
+        cursor: pointer;
+        }
 
 
 #titre-competences {
@@ -321,8 +320,8 @@ h2{
 }
 
 #viewport {
-  transform-origin: center center;
-  transition: transform 1.5s ease-in-out;
+    transform-origin: center center;
+    transition: transform 1.5s ease-in-out;
 }
 body.not-ready #viewport {
   transition: none !important;
