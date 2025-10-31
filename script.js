@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const viewport = document.getElementById("viewport");
   const home = document.getElementById("home");
