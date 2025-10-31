@@ -42,17 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentTarget = home;
   let currentZoom = HOME_ZOOM;
 
-// --- 1️⃣ Centrer sur le centre du MAIN une fois que tout est bien rendu ---
-document.body.classList.add("not-ready");
-
 window.addEventListener("load", () => {
   const main = document.querySelector("main"); // ton conteneur global
 
   requestAnimationFrame(() => {
-    centerOn(main, HOME_ZOOM); // <-- ici, zoom sur le centre du plan
-    setTimeout(() => {
-      document.body.classList.remove("not-ready");
-    }, 50);
+    centerOn(main, HOME_ZOOM);
   });
 });
 
@@ -94,11 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     cards.forEach((card, index) => {
         card.addEventListener("click", () => {
-            // Masquer toutes les présentations
-            console.log("Carte cliquée :", index + 1);
             presentations.forEach(p => p.classList.remove("active"));
-
-            // Afficher celle correspondant à la carte cliquée
             presentations[index].classList.add("active");
         });
     });

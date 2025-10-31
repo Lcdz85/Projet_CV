@@ -10,38 +10,43 @@
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Pencil';
   src: url('fonts/pencilant.script.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Poetry';
   src: url('fonts/poetirey.regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Croquis';
   src: url('fonts/saucer-bb.regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Caveat';
+  src: url('fonts/Caveat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Caveat';
+  src: url('fonts/Caveat-Bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: bold;
+}
 
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    /* overflow: hidden; empêche le scroll */
+    overflow: hidden; /*empêche le scroll */
     box-sizing: border-box;
-    background-image: url("img/fond-papier3.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 /* --- Zone principale --- */
@@ -57,6 +62,8 @@ main {
 
 /* --- Cadre fixe --- */
 .cadre {
+    border: 1vw solid rgb(0, 0, 0);
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     left: 0;
@@ -67,34 +74,35 @@ main {
     flex-direction: column;
     justify-content: space-between;
     z-index: 1000;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 /* Barre de navigation */
     nav {
-        align-items: center;
-        gap: 2rem;
-        height: 60px; /* fixe */
-        display: flex;
-        justify-content: space-around;
+        position: relative;
+        top: -1vw;
         
+        align-items: center;
+        text-align: center;
+        height: 60px;
+        display: flex;
+        background: linear-gradient(to bottom, #2a2a2a 0%, #000000 100%);
+        box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.12),
+        0 4px 10px rgba(0, 0, 0, 0.8);
+        pointer-events: auto; 
     }
-    button {
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.258);
-        border: none;
-        background-color: rgba(255, 255, 255, 0.483);
+    .onglet-titre>a {
+        color: white;
         font-family: 'Courier New', Courier, monospace;
-        font-weight: normal;
         font-size: clamp(10px, 1.5vw, 32px);
+    }
+    .onglet-titre>a>img{
+        width: 2vw;
+        height: 2vw;
     }
     .home:hover {
     content: url("img/home2.png");
-    }
-
-    nav {
-        text-align: center;
-        transition: color 0.2s;
-        pointer-events: auto; 
     }
 
     nav a {
@@ -108,32 +116,66 @@ main {
 
     nav img {
         width: 100%;
-        height: 2vw;
+        height: 2vh;
     }
 
 /* Pied de page */
     .footer-bar {
+        position: relative;
+        top: 1vw;
+        width: calc(100% + 2vw);
+        left: -1vw;
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
-        color: rgb(0, 0, 0);
+        background: linear-gradient(to top, #2a2a2a 0%, #000000 100%);
+        box-shadow:
+            inset 0 -1px 2px rgba(255, 255, 255, 0.12),
+            0 -4px 10px rgba(0, 0, 0, 0.8);
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.4);
         padding: 10px 20px;
         height: 50px;
         pointer-events: auto; 
-        
     }
-    .footer-bar a {
+    #nom {
         color: white;
-        text-decoration: none;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: normal;
+        font-size: clamp(10px, 1.5vw, 32px); 
+        margin: 0 auto;  
+    }
+    #info{ position: absolute;
+        right: 2vw;
+    }
+    #info img {
+        width: 30px;
+        height: 30px;
+        filter: invert(1);
     }
     
     /* --- Sections principales --- */
+    
+.contenu{
+    display: flex;
+    height: 90%;
+    flex: 1;
+    justify-content: center;
+    align-items: center; 
+    box-sizing: border-box;
+    flex-direction: row;
+}
+.contenu>div{
+    width: 50%;
+    height: 100%;
+    padding: 1vh;
+}
 #home {
     order: 3;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, calc(-50% + 1vh));
     text-align: center;
 }
     #home > h1 {
@@ -151,8 +193,8 @@ main {
 
 #portfolio { 
     order: 1; 
-    background-color: rgba(222, 184, 135, 0.150); 
     justify-content: space-between; 
+    border: 2px solid rgb(224, 224, 224);
 }
     #titre-portfolio {
         height: 10%;
@@ -160,20 +202,6 @@ main {
         margin-left: auto;
         transform: rotate(-4deg) translate(-3vw, -1.5vh); 
 }
-    .contenu{
-        display: flex;
-        height: 90%;
-        flex: 1;
-        justify-content: center;
-        align-items: center; 
-        box-sizing: border-box;
-        flex-direction: row;
-    }
-    .contenu>div{
-        border: 2px solid rgb(182, 182, 182);
-        width: 50%;
-        /* min-height: 0; */
-    }
     #presentation-projet {
         display: flex;
         justify-content: center;
@@ -184,24 +212,24 @@ main {
 
     .presentation-contenu {
         display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        /* Cadre fixe pour toutes les présentations */
-        width: 80%;
-        height: 80%;
-
-        box-sizing: border-box;
-        text-align: center;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease;
     }
 
     .presentation-contenu.active {
         display: flex;
-        opacity: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 80%;
+        box-sizing: border-box;
+        text-align: center;
+        background-image: url("img/papier/fond-papier3.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 
+            0.5px 0.5px 2px rgba(0,0,0,0.3), 
+            inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
         transform: translateY(0);
     }
 
@@ -215,10 +243,12 @@ main {
 
     #presentation-projet p {
         margin-top: 1vw;
-        font-size: 0.5vw;
-        color: #333;
+        font-size: 0.6vw;
+        color: #3d3d3da7;
         width: 90%;
         max-height: 50%;
+        font-family: 'Caveat';
+        font-weight: normal;
         
     }
     /* --- Cartes du portfolio --- */
@@ -239,13 +269,22 @@ main {
         aspect-ratio: 3 / 4;
         flex: 0 1 auto;
         background: #fafaf4;
-        border-radius: 5px;
+        background-image: url("img/papier/fond-papier3.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 3px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
         .card-img-top {
             width: 85%;
             margin: auto;
@@ -254,37 +293,67 @@ main {
             object-fit: cover;
             break-inside: avoid;
             margin-bottom: 5px;
-            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.258);
+            box-shadow: 
+                0.5px 0.5px 2px rgba(0,0,0,0.3), 
+                inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
             border-radius: 0;
         }
         .card-body {
             padding: 0.3rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
             font-size: 0.5vw;
             text-align: center;
-    }
+        }
         #card1 { transform: rotate(3deg) translate(10px, 12px); }
         #card2 { transform: rotate(-4deg) translate(8px, -3px); }
         #card3 { transform: rotate(-2deg) translate(-10px, 4px); }
         #card4 { transform: rotate(3.5deg) translate(-8px, -10px); }
         #card1, #card2, #card3, #card4{
             align-self: flex-start; 
-            box-shadow: 1px 0.5px 0.5px rgba(0, 0, 0, 0.150); 
+        box-shadow: 
+            0.5px 0.5px 2px rgba(0,0,0,0.3), 
+            inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
+        }
+        #card1:hover {
+        transform: rotate(3deg) translate(10px, 12px) translateY(-2px);
+        box-shadow: 
+            0 6px 8px rgba(0, 0, 0, 0.2), 
+            inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
+        }
+        #card2:hover {
+        transform: rotate(-4deg) translate(8px, -3px) translateY(-2px);
+        box-shadow: 
+            0 6px 8px rgba(0, 0, 0, 0.2), 
+            inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
+        }
+        #card3:hover {
+        transform: rotate(-2deg) translate(-10px, 4px) translateY(-2px);
+        box-shadow: 
+            0 6px 8px rgba(0, 0, 0, 0.2), 
+            inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
+        }
+        #card4:hover {
+        transform: rotate(3.5deg) translate(-8px, -10px) translateY(-2px);
+        box-shadow: 
+            0 6px 8px rgba(0, 0, 0, 0.2), 
+            inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
         }
 
 #competences {
     order: 2; 
-    background-color: rgba(95, 158, 160, 0.150);
+    border: 2px solid rgb(224, 224, 224);
     justify-content: flex-end; 
 }
 
 #parcours { 
     order: 4; 
-    background-color: rgba(44, 174, 30, 0.150); 
+    border: 2px solid rgb(224, 224, 224);
 }
 
 #profil {
     order: 5; 
-    background-color: rgba(93, 13, 122, 0.150); 
+    border: 2px solid rgb(224, 224, 224);
 }
 
 
@@ -294,16 +363,18 @@ h2{
     font-family: 'Pencil';
     font-size: 1.2vw;
 }
-    h2>a{
+    h2 a{
         text-decoration: none;
         color: rgba(106, 106, 106, 0.563);
         cursor: pointer;
         }
-
+    h2 a:hover{
+        color: rgba(85, 85, 85, 0.563);
+    }
+        
 
 #titre-competences {
     width: fit-content;
-    /* align-self: flex-end; */
     transform: rotate(2deg) translate(1vw, -2vh);
 }
 
@@ -320,9 +391,13 @@ h2{
 }
 
 #viewport {
-    transform-origin: center center;
+    background-image: url("img/papier/fond-papier2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transform-origin: 0 0;
     transition: transform 1.5s ease-in-out;
 }
 body.not-ready #viewport {
-  transition: none !important;
+  transition: none;
 }
