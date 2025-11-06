@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const viewport = document.getElementById("viewport");
   const home = document.getElementById("home");
 
-  const HOME_ZOOM = 3.5;
+  const HOME_ZOOM = 3.8;
   const SECTION_ZOOM = 2.2;
 
   viewport.style.transformOrigin = "0 0";
