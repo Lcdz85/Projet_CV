@@ -70,7 +70,6 @@ body {
     nav {
         position: relative;
         top: -1vw;
-        
         align-items: center;
         text-align: center;
         height: 60px;
@@ -173,7 +172,7 @@ p{
     /* border: 1px solid rgba(159, 159, 159, 0.669); */
 }
 .contenuSection1{ 
-    border: 1px solid rgba(213, 151, 89, 0.669);
+    /* border: 1px solid rgba(213, 151, 89, 0.669); */
     width: 50%;
     height: 100%;
     display: flex;
@@ -181,7 +180,7 @@ p{
     box-sizing: border-box;
 }
 .contenuSection2{
-    border: 2px solid rgba(89, 190, 213, 0.669);
+    /* border: 2px solid rgba(89, 190, 213, 0.669); */
     width: 50%;
     height: 100%;
 }
@@ -192,7 +191,7 @@ p{
 }
 .contenuTitre{
     height: 10%;
-    background-color: rgb(247, 236, 204);
+    /* background-color: rgb(247, 236, 204); */
     padding: 0.5vh;
 }
     
@@ -396,12 +395,73 @@ h2{
             0 6px 8px rgba(0, 0, 0, 0.2), 
             inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
         }
-
+        
 #competences {
     order: 2; 
     justify-content: flex-end; 
 }
 
+#competences .contenuSection1{
+    width: 20%;
+}
+#competences .contenuSection2{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#contenu1-competences {
+    height: 90%;
+}
+
+.skill-container{
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#list-lang, #list-outils{
+    width: 12vw;
+    padding: 1em;
+    font-size: 0.6vw;
+    color: #848484a7;
+    font-family: 'Caveat';
+    font-weight: normal;
+    background-image: url("img/papier/fond-papier.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 
+        0.5px 0.5px 2px rgba(0,0,0,0.3), 
+        inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
+}
+.skill{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1em;
+}
+.carre, .carrePlein{
+    width: 1em;
+    height: 1em;
+}
+.carre{
+    background-image: url("img/carre.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.8;
+}
+.carrePlein{
+    background-image: url("img/carrePlein.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+}
 #parcours { 
     order: 4;
 }
@@ -474,12 +534,6 @@ h2{
         text-decoration: none;
     }
 
-#competences {
-    order: 2; 
-    justify-content: flex-end; 
-}
-
-
 #profil {
     order: 5;
 }
@@ -487,17 +541,17 @@ h2{
 
 #viewport {
     width: 100%;
-  height: 100%;
-  /* background-color: #ffffff;
-  background-image: radial-gradient(rgba(12, 12, 12, 0.171) 0.5px, transparent 0);
-  background-size: 15px 15px;
-  background-position: -5px -5px; */
-    background-image: url("img/papier/vieux-papier-froisse.jpg");
+    height: 100%;
+    background-color: #ffffff;
+    background-image: radial-gradient(rgba(12, 12, 12, 0.171) 0.5px, transparent 0);
+    background-size: 15px 15px;
+    background-position: -5px -5px;
+    /* background-image: url("img/papier/vieux-papier-froisse.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    transform-origin: 0 0;
-    transition: transform 1.5s ease-in-out;
+    transform-origin: 0 0;*/
+    transition: transform 1.5s ease-in-out; 
 }
 body.not-ready #viewport {
   transition: none;
