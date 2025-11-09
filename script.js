@@ -1,10 +1,9 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const viewport = document.getElementById("viewport");
   const home = document.getElementById("home");
+  const body = document.body;
 
-  const HOME_ZOOM = 3.8;
+  const HOME_ZOOM = 3.5;
   const SECTION_ZOOM = 2.2;
 
   viewport.style.transformOrigin = "0 0";
@@ -39,6 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const ty = cy - z * y0;
 
     viewport.style.transform = `translate(${tx}px, ${ty}px) scale(${z})`;
+    
+    if (el === document.querySelector("main") || el.id === "home") {
+      body.classList.add('hide-tabs');
+    } else {
+      body.classList.remove('hide-tabs');
+    }
   }
 
   let currentTarget = home;
@@ -88,10 +93,59 @@ document.addEventListener("DOMContentLoaded", function() {
     const cards = document.querySelectorAll(".card");
     const presentations = document.querySelectorAll(".presentation-contenu");
 
+    // Close presentation when clicking outside
+    document.addEventListener('click', function(event) {
+        let isClickInsideCard = false;
+        cards.forEach(card => {
+            if (card.contains(event.target)) {
+                isClickInsideCard = true;
+            }
+        });
+
+        let isClickInsidePresentation = false;
+        presentations.forEach(presentation => {
+            if (presentation.contains(event.target)) {
+                isClickInsidePresentation = true;
+            }
+        });
+
+        if (!isClickInsideCard && !isClickInsidePresentation) {
+            presentations.forEach(p => p.classList.remove('active'));
+        }
+    });
+
     cards.forEach((card, index) => {
-        card.addEventListener("click", () => {
+        card.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isActive = presentations[index].classList.contains('active');
             presentations.forEach(p => p.classList.remove("active"));
-            presentations[index].classList.add("active");
+            if (!isActive) {
+                presentations[index].classList.add("active");
+            }
         });
     });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const events = document.querySelectorAll("#parcours .event");
+  const infos = document.querySelectorAll("#parcours .info-event");
+
+  // Masquer toutes les divs au départ
+  infos.forEach(info => info.style.display = "none");
+
+  events.forEach(event => {
+    event.addEventListener("click", () => {
+      // Cacher toutes les divs
+      infos.forEach(info => info.style.display = "none");
+
+      // Trouver la div ciblée
+      const targetId = event.dataset.target;
+      const targetDiv = document.getElementById(targetId);
+
+      if (targetDiv) {
+        targetDiv.style.display = "block";
+        targetDiv.classList.add("show");
+      }
+    });
+  });
 });

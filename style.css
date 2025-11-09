@@ -79,6 +79,12 @@ body {
         inset 0 1px 2px rgba(255, 255, 255, 0.12),
         0 4px 10px rgba(0, 0, 0, 0.8);
         pointer-events: auto; 
+        transition: opacity 0.3s ease;
+    }
+    
+    .hide-tabs .onglet-titre:not(:has(a[href="#home"])) {
+        opacity: 0;
+        pointer-events: none;
     }
     .onglet-titre>a {
         color: white;
@@ -153,7 +159,9 @@ main {
     box-sizing: border-box;
 }
 h3{
-    font-family: 'Caveat';
+    color:rgb(3, 144, 144);
+    font-family: 'Marker';
+    margin-bottom: 1.5vh;
     font-size: 1.2vw;
     transform: rotate(-2deg);
 }
@@ -161,10 +169,20 @@ h3{
 p{
     width: 100%;
     font-size: 0.6vw;
-    color: #848484a7;
-    font-family: 'Caveat';
+    color: #414040a7;
+    font-family: 'Pencil';
     font-weight: normal;
     text-align: left;
+    letter-spacing: 1px;
+}
+
+.card img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.card:hover img {
+    filter: grayscale(0%);
 }
 
 .contenuSection1>div{
@@ -186,7 +204,7 @@ p{
 }
 
 .contenu1{
-    height: 80%;
+    height: 90%;
     padding: 1vh 2vw;
 }
 .contenuTitre{
@@ -201,7 +219,7 @@ p{
 
 #titre-competences {
     width: fit-content;
-    transform: rotate(2deg) translate(1vw, -2vh);
+    transform: rotate(2deg) translate(0.5vw, -2vh);
 }
 
 #titre-parcours {
@@ -211,15 +229,15 @@ p{
 
 h2{
     font-family: 'Pencil';
-    font-size: 1.2vw;
+    font-size: 1.5vw;
 }
     h2 a{
         text-decoration: none;
-        color: rgba(106, 106, 106, 0.563);
+        color: rgb(160, 160, 160);
         cursor: pointer;
         }
     h2 a:hover{
-        color: rgba(85, 85, 85, 0.563);
+        color:rgb(77, 134, 136);
     }
 
 #home {
@@ -233,7 +251,7 @@ h2{
     #home > h1 {
         font-family: 'Croquis';
         font-size: 1.5vw;
-        color: rgba(0, 0, 0, 0.6);
+        color: rgba(0, 0, 0, 0.595)
     }
 
 /* ----------- contenus des sections ----------- */
@@ -249,11 +267,14 @@ h2{
 /* ---------------------------------------------- */
 
 #portfolio { 
-    order: 1; 
-    /* justify-content: space-between;  */
+    order: 1;
+}
+#titre-portfolio {
+        margin-left: auto;
+        transform: rotate(-4deg) translate(-1vw, -1vh); 
 }
     #presentation-projet {
-        height: 90%;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -262,7 +283,7 @@ h2{
     .presentation-contenu {
         display: none;
     }
-
+        
     .presentation-contenu.active {
         width: 90%;
         height: 90%;
@@ -283,7 +304,37 @@ h2{
         height: auto;
         max-height: 50%;
         margin-top: 1vmin;
+        box-shadow: 
+            0.5px 0.5px 2px rgba(0,0,0,0.3), 
+            inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
         }
+    
+    .div-text{
+        overflow: auto;
+        /* Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+        -ms-overflow-style: -ms-autohiding-scrollbar; /* IE et Edge */
+    }
+    
+    /* Style Scrollbar (Chrome, Safari, Edge) */
+    .div-text::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .div-text::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .div-text::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+    }
+    
+    .div-text::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
     .presentation-contenu img {
         width: 100%;
         height: 100%;
@@ -293,7 +344,7 @@ h2{
                 0.5px 0.5px 2px rgba(0,0,0,0.3), 
                 inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
     }
-
+    
     .presentation-contenu p {
         /* height: auto; */
         width: 100%;
@@ -304,6 +355,7 @@ h2{
         padding: 1vmin;
         text-align: left;
         margin-top: 1vh;
+        overflow: hidden;
     }
 
     /* --- Cartes du portfolio --- */
@@ -315,10 +367,6 @@ h2{
         align-content: space-evenly;
         gap: 1.5rem 2rem;
         
-    }
-    #titre-portfolio {
-        margin-left: auto;
-        transform: rotate(-4deg) translate(-1vw, -0.5vh); 
     }
     
     .card{
@@ -349,7 +397,7 @@ h2{
             aspect-ratio: 1 / 1;
             object-fit: cover;
             break-inside: avoid;
-            margin-bottom: 5px;
+            border-radius: 1px;
             box-shadow: 
                 0.5px 0.5px 2px rgba(0,0,0,0.3), 
                 inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
@@ -367,9 +415,9 @@ h2{
         #card4 { transform: rotate(3.5deg) translate(-8px, -10px); }
         #card1, #card2, #card3, #card4{
             align-self: flex-start; 
-        box-shadow: 
-            0.5px 0.5px 2px rgba(0,0,0,0.3), 
-            inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
+            box-shadow: 
+                0.5px 0.5px 2px rgba(0,0,0,0.3), 
+                inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
         }
         #card1:hover {
         transform: rotate(3deg) translate(10px, 12px) translateY(-2px);
@@ -401,77 +449,106 @@ h2{
     justify-content: flex-end; 
 }
 
-#competences .contenuSection1{
-    width: 20%;
-}
-#competences .contenuSection2{
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
+    #competences .contenuSection1{
+        width: 20%;
+    }
+    #competences .contenuSection2{
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
 
-#contenu1-competences {
-    height: 90%;
-}
+    #contenu1-competences {
+        height: 90%;
+    }
 
-.skill-container{
-    width: 45%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-#list-lang, #list-outils{
-    width: 12vw;
-    padding: 1em;
-    font-size: 0.6vw;
-    color: #848484a7;
-    font-family: 'Caveat';
-    font-weight: normal;
-    background-image: url("img/papier/fond-papier.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 
+    #list-lang, #list-outils{
+        width: 12vw;
+        padding: 1em;
+        font-size: 0.6vw;
+        color: #848484a7;
+        font-family: 'Caveat';
+        font-weight: normal;
+        background-image: url("img/papier/fond-papier.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 
         0.5px 0.5px 2px rgba(0,0,0,0.3), 
         inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
-}
-.skill{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    gap: 1em;
-}
-.carre, .carrePlein{
-    width: 1em;
-    height: 1em;
-}
-.carre{
-    background-image: url("img/carre.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    opacity: 0.8;
-}
-.carrePlein{
-    background-image: url("img/carrePlein.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.8;
-}
+    }
+    .skill-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .skill{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        gap: 1em;
+    }
+    .carre, .carrePlein{
+        width: 1em;
+        height: 1em;
+    }
+    .carre{
+        background-image: url("img/carre.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        opacity: 0.8;
+    }
+    .carrePlein{
+        background-image: url("img/carrePlein.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.8;
+    }
 #parcours { 
     order: 4;
+}
+
+ 
+
+#profil {
+    order: 5;
 }
     #titre-profil {
         width: fit-content;
         font-size: 1.5rem;
-        transform: rotate(-5deg) translate(3vw, 1vh);
+        transform: rotate(-5deg) translate(2vw, 1vh);
+    }
+    #profil .contenuSection1{
+        width: 35%;
+    }
+    #profil .contenuSection2{
+        margin-top: 2vh;
+        width: 60%;
+    }
+    #profil h3{
+        text-align: right;
+        margin: 0;
+    }
+        
+    #profil p{
+        padding: 1vh 2vw;
+        margin-left: 2vw;
+        margin-right: 2vw;
+        background-image: url("img/papier/fond-papier.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 
+            0.5px 0.5px 2px rgba(0,0,0,0.3), 
+            inset 0.5px 0.2px 2px rgba(255, 255, 255, 0.581);
     }
     #aboutMe {
-        margin-top: 2vh;
+        margin-top: 1vh;
         font-family: 'Caveat';
         padding: 2vh 2vw;
         display: flex;
@@ -479,22 +556,6 @@ h2{
         align-items: center;
     }
 
-    #aboutMe p{
-        padding: 1vh;
-        background-image: url("img/papier/fond-papier.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        box-shadow: 
-            0.5px 0.5px 2px rgba(0,0,0,0.3), 
-            inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    #aboutMe p:hover{
-            transform: translateY(-1px) scale(1.01);
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
-    }
-    
     #aboutMe> :first-child{
         transform: rotate(1deg);
     }
@@ -508,18 +569,23 @@ h2{
         justify-content: center;
         align-items: center;
         transform: rotate(10deg);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
        
     }
     #backgroundCV {
         padding: 1em;
         border-radius: 50%;
+        background-color: white;
         border: 4px solid rgba(0, 0, 0, 0.060);
-
+    }
+    #cv:hover {
+        /* transform: translateY(-1px) scale(1.01); */
+        transform: scale(1.1);
     }
     
     #cv {
-        width: 50px;
-        height: 50px;
+        width: 3em;
+        height: 3em;
         background-image: url("img/cv.png");
         background-repeat: no-repeat;
         background-size: contain;
@@ -534,10 +600,109 @@ h2{
         text-decoration: none;
     }
 
-#profil {
-    order: 5;
+/* ===== Timeline verticale ===== */
+#parcours .contenuSection1{
+    width: 30%;
+}
+#parcours .contenuSection2{
+    width: 70%;
+}
+#parcours .timeline {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 0.5vh;
+    padding: 4vh 0; 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Ligne centrale */
+#parcours .timeline::before {
+     content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background: rgb(199, 199, 199);
+}
+
+/* Événements (alternance gauche/droite) */
+#parcours .event {
+    position: relative;
+    width: 50%;
+    height: 8vh;
+    padding: 1.2vh 2vw;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#parcours .event:nth-child(odd) {
+    left: 0;
+    text-align: right;
+    flex-direction: row-reverse;
+}
+#parcours .event:nth-child(even) {
+    left: 50%;
+    text-align: left;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Points sur la ligne */
+#parcours .event::before {
+    content: "";
+    position: absolute;
+    top: 50%;                    /* centré verticalement */
+    transform: translateY(-50%);
+    width: 16px;
+    height: 1px;
+    background: rgb(199, 199, 199);
+}
+
+#parcours .event:nth-child(odd)::before { right: 0 }
+#parcours .event:nth-child(even)::before { left: 0 }
+
+/* Texte (cohérent avec ton thème) */
+#parcours .year {
+    font-weight: bold;
+    color: #000000a7;
+    margin-bottom: 0.4vh;
+    font-size: clamp(12px, 0.85vw, 18px);
+    font-family: 'Caveat';
+    font-size: bold;
+    text-align: center;
+}
+#parcours .title {
+    display: inline-block;
+    color: #848484a7;
+    font-size: clamp(12px, 0.85vw, 16px);
+    font-family: 'Caveat';
+    text-align: center;
+    width: 60%
+}
+
+#parcours .info-event {
+  display: none;
+  background-image: url("img/papier/fond-papier.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 1.5em;
+  box-shadow: 0.5px 0.5px 2px rgba(0,0,0,0.3), inset 0.5px 0.5px 2px rgba(255, 255, 255, 0.581);
+  font-family: 'Caveat';
+  font-size: 0.9vh;
+  color: #444;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#parcours .info-event.show {
+  opacity: 1;
+}
 
 #viewport {
     width: 100%;
@@ -546,13 +711,13 @@ h2{
     background-image: radial-gradient(rgba(12, 12, 12, 0.171) 0.5px, transparent 0);
     background-size: 15px 15px;
     background-position: -5px -5px;
-    /* background-image: url("img/papier/vieux-papier-froisse.jpg");
+    /* background-image: url("img/papier/grungy-blanc.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    transform-origin: 0 0;*/
+    transform-origin: 0 0; */
     transition: transform 1.5s ease-in-out; 
 }
 body.not-ready #viewport {
-  transition: none;
+    transition: none; 
 }
